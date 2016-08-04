@@ -4,14 +4,24 @@
 # (2) Please be thoughtful when naming your variables.
 # (3) Please remove development code before submitting.
 ###############################################################################
+
+# Import libraries here
+import math
+
 # Exercise 6.2
 # See 6.1: "write a compare function takes two values, x and y, and returns 1
 # if x > y, 0 if x == y, and -1 if x < y."
 # When you submit only include your final function: compare
 
-
-
-
+# define function compare
+# Input: 2 Numbers, x and y
+def compare(x, y):
+    if(x > y):
+        return 1
+    elif(x == y):
+        return 0
+    elif(x < y):
+        return -1
 
 ###############################################################################
 # Exercise 6.2
@@ -22,19 +32,27 @@
 # Do develop incrementally. Do not share in your final push your incremental
 # work.
 
-
-
-
+# define function hypotenuse
+# Input: Base and Perpendicular of the triangle
+# Return: Hypotenuse 
+def hypotenuse(b, p):
+    h = (b**2 + p**2)**.5
+    return h
 
 ###############################################################################
 # Exercise 6.4
-# See 6.4: "write a function is_between(x, y, z) that returns True if x ≤ y ≤ z
+# See 6.4: "write a function is_between(x, y, z) that returns True if x <= y <= z
 # or False otherwise"
 # When you submit only include your final function: is_between
 
-
-
-
+# define function Is_Between
+# Input: 3 Numbers, x, y and z
+# Output: True if x <= y <= z
+def is_between(x, y, z):
+    if (x <= y and y <= z):
+        return True
+    else:
+        return False   
 
 ###############################################################################
 # Exercise 3.2
@@ -44,9 +62,21 @@
 # string."
 # When you submit only include your final function: is_palindrome
 
+# define function is_palindrome
+# Input: String 
+# Output: Boolean
+def is_palindrome(s):
+    # Cover to Lowercase
+    s = s.lower()
 
+    # Get the length of the String s
+    length = len(s)
 
-
+    # recursively call the function to compare the 1st and the last characters of the string and return a boolean value
+    if(length > 1):
+        return (s[0] == s[-1] and is_palindrome(s[1:length - 1]))
+    else:
+        return True
 
 ###############################################################################
 # Exercise 4
@@ -58,9 +88,19 @@
 # (whole numbers not including zero)
 # When you submit only include your final function: is_power
 
+# define function is_power
+# Input: Number a and Number b
+def is_power(a, b):
 
-
-
+    # Base case 1: When a is not an interger then Return False
+    if(a != math.floor(a)):
+        return False
+    # Base case 2: When a = 1 then Return True
+    elif(a == 1):
+        return True
+    # Recursion to call the smaller numbers
+    else:
+        return ((a % b == 0) and is_power(a/b, b))
 
 ###############################################################################
 def main():
@@ -75,30 +115,30 @@ def main():
 
 
     ###########################################################################
-    # # Uncomment the below to test and before commiting:
+    # Uncomment the below to test and before commiting:
     # # Exercise 1
-    # print(compare(1, 1))
-    # print(compare(1, 2))
-    # print(compare(2, 1))
-    # # # Exercise 2
-    # print(hypotenuse(1, 1))
-    # print(hypotenuse(3, 4))
-    # print(hypotenuse(1.2, 12))
-    # # # Exercise 3
-    # print(is_between(1, 2, 3))
-    # print(is_between(2, 1, 3))
-    # print(is_between(3, 1, 2))
-    # print(is_between(1, 1, 2))
-    # # # Exercise 6
-    # print(is_palindrome("Python"))
-    # print(is_palindrome("evitative"))
-    # print(is_palindrome("sememes"))
-    # print(is_palindrome("oooooooooooo"))
-    # # # Exercise 7
-    # print(is_power(28, 3))
-    # print(is_power(27, 3))
-    # print(is_power(248832, 12))
-    # print(is_power(248844, 12))
+    print(compare(1, 1))
+    print(compare(1, 2))
+    print(compare(2, 1))
+    # # Exercise 2
+    print(hypotenuse(1, 1))
+    print(hypotenuse(3, 4))
+    print(hypotenuse(1.2, 12))
+    # # Exercise 3
+    print(is_between(1, 2, 3))
+    print(is_between(2, 1, 3))
+    print(is_between(3, 1, 2))
+    print(is_between(1, 1, 2))
+    # # Exercise 6
+    print(is_palindrome("Python"))
+    print(is_palindrome("evitative"))
+    print(is_palindrome("sememes"))
+    print(is_palindrome("oooooooooooo"))
+    # Exercise 7
+    print(is_power(28, 3))
+    print(is_power(27, 3))
+    print(is_power(248832, 12))
+    print(is_power(248844, 12))
 
 
 if __name__ == "__main__":
